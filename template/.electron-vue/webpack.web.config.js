@@ -31,7 +31,7 @@ let webConfig = {
         }
       },
 {{/if}}
-    {{#if usesass}}
+{{#if usesass}}
       {
         test: /\.scss$/,
         use: ['vue-style-loader', 'css-loader', 'sass-loader']
@@ -40,7 +40,7 @@ let webConfig = {
         test: /\.sass$/,
         use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax']
       },
-    {{/if}}
+{{/if}}
       {
         test: /\.less$/,
         use: ['vue-style-loader', 'css-loader', 'less-loader']
@@ -81,7 +81,8 @@ let webConfig = {
             limit: 10000,
             name: 'imgs/[name].[ext]'
           }
-        }
+        },
+        exclude: [path.join(__dirname, '..', 'src/renderer/assets/svg')]
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -92,6 +93,16 @@ let webConfig = {
             name: 'fonts/[name].[ext]'
           }
         }
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: 'icon-[name]'
+          }
+        },
+        include: [path.join(__dirname, '..', 'src/renderer/assets/svg')]
       }
     ]
   },

@@ -57,13 +57,13 @@ module.exports = {
         type: 'string',
         required: true,
         message: 'Application Id',
-        default: 'com.example.yourapp'
+        default: 'cc.cs-tao.app'
     },
     appver: {
         type: 'string',
         required: true,
         message: 'Application Version',
-        default: '0.0.1'
+        default: '0.0.0'
     },
     description: {
       type: 'string',
@@ -79,8 +79,8 @@ module.exports = {
     plugins: {
       type: 'checkbox',
       message: 'Select which Vue plugins to install',
-      choices: ['axios', 'vue-electron', 'vue-router', 'vuex'],
-      default: ['axios', 'vue-electron', 'vue-router', 'vuex']
+      choices: ['axios', 'vue-electron', 'vue-router', 'vuex', 'element-ui', 'mockjs'],
+      default: ['axios', 'vue-electron', 'vue-router', 'vuex', 'element-ui', 'mockjs']
     },
     eslint: {
       type: 'confirm',
@@ -148,7 +148,9 @@ module.exports = {
         'axios': '^0.18.0',
         'vue-electron': '^1.0.6',
         'vue-router': '^3.0.1',
-        'vuex': '^3.0.1'
+        'vuex': '^3.0.1',
+        "element-ui": "^2.4.4",
+        "mockjs": "^1.0.1-beta3"
       }
 
       if (Object.keys(plugins).length > 0) output += ',\n'
@@ -178,7 +180,9 @@ module.exports = {
     '.eslintignore': 'eslint',
     '.eslintrc.js': 'eslint',
     'appveyor.yml': 'builder === \'builder\'',
-    '.travis.yml': 'builder === \'builder\''
+    '.travis.yml': 'builder === \'builder\'',
+    'src/renderer/api/mock/**/*': 'plugins[\'mockjs\']',
+    'src/renderer/style/element-ui.scss': 'plugins[\'element-ui\']'
   },
   complete (data) {
     getCurrentSHA(data.author).then(sha => {

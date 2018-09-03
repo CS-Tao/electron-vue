@@ -97,7 +97,8 @@ let rendererConfig = {
             limit: 10000,
             name: 'imgs/[name]--[folder].[ext]'
           }
-        }
+        },
+        exclude: [path.join(__dirname, '..', 'src/renderer/assets/svg')]
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -116,6 +117,16 @@ let rendererConfig = {
             name: 'fonts/[name]--[folder].[ext]'
           }
         }
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: 'icon-[name]'
+          }
+        },
+        include: [path.join(__dirname, '..', 'src/renderer/assets/svg')]
       }
     ]
   },

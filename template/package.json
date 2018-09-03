@@ -73,6 +73,11 @@
     },
     "linux": {
       "icon": "build/icons"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "{{ author }}",
+      "repo": ""
     }
   },
 {{/if_eq}}
@@ -153,6 +158,7 @@
     "sass-loader": "^7.0.3",
     {{/if}}
     "style-loader": "^0.21.0",
+    "svg-sprite-loader": "^3.8.0",
     "url-loader": "^1.0.1",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.2.4",
