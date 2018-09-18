@@ -4,6 +4,7 @@ import axios from 'axios'
 {{/isEnabled}}
 {{#isEnabled plugins 'element-ui'}}
 import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 {{/isEnabled}}
 
 import App from './App'
@@ -16,10 +17,8 @@ import store from './store'
 {{#isEnabled plugins 'mockjs'}}
 import './api/mock'
 {{/isEnabled}}
-{{#isEnabled plugins 'element-ui'}}
-import 'element-ui/lib/theme-chalk/index.css'
-{{/isEnabled}}
 import './style/index.scss'
+import './assets/svg'
 
 {{#isEnabled plugins 'vue-electron'}}
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))

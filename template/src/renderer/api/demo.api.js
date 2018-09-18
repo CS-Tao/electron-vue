@@ -3,10 +3,13 @@ import urls from './config/urls'
 
 export default {
   // Get demo
-  getRequest: () => {
+  getRequest: (param1, param2) => {
     return request({
       url: urls.demo.getRequest,
-      method: 'get'
+      method: 'get',
+      params: {
+        param1, param2
+      }
     })
   },
   // Post demo
